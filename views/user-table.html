@@ -1,0 +1,85 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<div class="container text-center">
+		<h1 class="tableHeader">List of users</h1>
+
+		<div id="user_search" class="col-xs-5 form-group pull-right">
+			<input type="text" class="search form-control" placeholder="Søk">
+		</div>
+
+		<table data-toggle="table"
+		data-classes="table table-hover results"
+		data-striped="true"
+		data-sort-name="Username"
+		data-sort-order="asc">
+			<thead>
+				<tr>
+					<th class="col-xs-3" data-field="Username" data-sortable="true">Brukernavn</th>
+					<th class="col-xs-3" data-field="Role" data-sortable="true">Rolle</th>
+					<th class="col-xs-3" data-field="Connected band" data-sortable="true">Tilknyttet</th>
+					<th class="col-xs-3" data-field="Delete" data-sortable="false"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr class="no-result">
+					<td colspan="8">Finner ikke noe som stemmer med søket</td>
+				</tr>
+				{% for user in users %}
+				<tr>
+					<td><a href="/user/{{ user.id }}">{{user.local.username}}</a></td>
+					<td>{{ user.role }}</td>
+					{% if user.connected_band.id %}
+					<td><a href="/band/{{ user.connected_band.name }}"></a>{{ user.connected_band.name }}</td>
+					{% else %}
+					<td>None</td>
+					{% endif %}
+					<td>
+						<form method="POST" action="/user/{{ user.id }}">
+	    					<input type="hidden" name="_method" value="DELETE"/>
+	    					<input type="submit" class="btn btn-danger" value="Slett"/><br>
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<hr>
+		<div class="container">
+		<div class="col-sm-6 col-sm-offset-3">
+			<form action="/signup" method="post">
+				<div class="form-group">
+					<label>Brukernavn</label>
+					<input type="text" class="form-control" name="username" placeholder="Brukernavn">
+				</div>
+				<div class="form-group">
+					<label>Fullt navn</label>
+					<input type="text" class="form-control" name="fullname" placeholder="Fullt navn">
+				</div>
+				<div class="form-group">
+					<label>Passord</label>
+					<input type="password" class="form-control" name="password" placeholder="Passord">
+				</div>
+				<div class="form-group">
+					<label>Rolle</label>
+					<select class="form-control" name="role">
+						<option value="admin">Admin</option>
+						<option value="bookingsjef">Bookingsjef</option>
+						<option value="bookingansvarlig">Bookingansvarlig</option>
+						<option value="crew">Crew</option>
+						<option value="band">Band</option>
+						<option value="manager">Manager</option>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-success" >Legg til Bruker</button>
+			</form>
+
+		</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

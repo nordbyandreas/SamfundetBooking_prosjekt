@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<div class="container text-center">
+		<h1 class="tableHeader">Konsertoversikt</h1>
+
+		<div id="concert_dropdown" class="col-xs-1 text-left">
+			<div class="dropdown" id="tabledrop">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Velg scene<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					{% for stage in stages %}
+					<li><a href="#">{{stage.name}}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<div id="concert_create" class="col-xs-2 text-left">
+			<a class="btn btn-primary" href="/concerts/create">Opprett ny konsert</a>
+		</div>
+
+		<div id="concert_search" class="col-xs-5 form-group pull-right">
+			<input type="text" class="search form-control" placeholder="Søk">
+		</div>
+
+		<table data-toggle="table" 
+		data-classes="table table-hover results"
+		data-striped="true"
+		data-sort-name="Date"
+		data-sort-order="asc">
+			<thead>
+				<tr>
+					<th class="col-xs-2" data-field="Date" data-sortable="true">Tidspunkt</th>
+					<!-- <th class="col-xs-1" data-field="Time" data-sortable="true">Tid</th> -->
+					<th class="col-xs-2" data-field="Concert" data-sortable="true">Konsertnavn</th>
+					<th class="col-xs-2" data-field="Band" data-sortable="true">Band</th>
+					<th class="col-xs-2" data-field="Genre" data-sortable="true">Sjanger</th>
+					<th class="col-xs-1" data-field="Scene" data-sortable="true">Scene</th>
+					<th class="col-xs-1" data-field="Tickets" data-sortable="true">Publikum</th>
+					{% if userCan('edit concert') %}
+					<th class="col-xs-1" data-field="Edit" data-sortable="false"></th>
+					{% endif %}
+					{% if userCan('delete concert') %}
+					<th class="col-xs-1" data-field="Delete" data-sortable="false"></th>
+					{% endif %}
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr class="no-result">
+					<td colspan="8">Finner ikke noe som stemmer med søket</td>
+				</tr>
+				<!-- <tr class="empty-table">
+					<td colspan="8">Det finnes ingen konserter</td>
+				</tr> -->
+				{% for concert in concerts %}
+				<tr>
+					<td>{{ concert.date }} {{ concert.time }}</td>
+					<td><a href='/concert/{{ concert.name }}'>{{ concert.name }}</a></td>
+					<td>
+						{% if concert.bands %}
+							{% for band in concert.bands %}
+							<a href="/band/{{ band.name }}">{{ band.name }}</a><br/>
+							{% endfor %}
+						{% endif %}
+					</td>
+					<td>{{concert.genre}}</td>
+					<td>{{concert.stage.name}}</td>
+					<td>{{concert.audSize}}</td>
+					{% if userCan('edit concert') %}
+					<td><a class="btn btn-default" href='/concert/{{ concert.name }}/edit'>Endre</a></td>
+					{% endif %}
+					{% if userCan('delete concert') %}
+					<td>
+						<form method="POST" action="/concert/{{ concert.name }}">
+							<input type="hidden" name="_method" value="DELETE"/>
+							<input type="submit" class="btn btn-danger" value="Slett"/><br>
+						</form>
+					</td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<div class="container text-center">
+		<h1 class="tableHeader">Bookingoversikt</h1>
+
+		<div id="booking_dropdown" class="col-xs-1 text-left">
+			<div class="dropdown" id="tabledrop">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Velg status<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Godkjent</a></li>
+					<li><a href="#">Avslått</a></li>
+					<li><a href="#">Venter godkjenning</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="booking_create" class="col-xs-2">
+			<a class="btn btn-primary" href="/bookings/create">Opprett nytt tilbud</a>
+		</div>
+
+		<div id="booking_search" class="col-xs-5 form-group pull-right">
+			<input type="text" class="search form-control" placeholder="Søk">
+		</div>
+
+		<table data-toggle="table" 
+		data-classes="table table-hover results"
+		data-striped="true"
+		data-sort-name="Date"
+		data-sort-order="asc">
+			<thead>
+				<tr>
+					<th class="col-xs-1" data-field="Date" data-sortable="true">Dato</th>
+					<th class="col-xs-4" data-field="Band" data-sortable="true">Band</th>
+					<th class="col-xs-2" data-field="Price" data-sortable="true">Pris</th>
+                    <th class="col-xs-1" data-field="Concert" data-sortable="false"></th>
+					<th class="col-xs-2" data-field="Status" data-sortable="true">Status</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr class="no-result">
+					<td colspan="8">Finner ikke noe som stemmer med søket</td>
+				</tr>
+			{% if bookings %}
+			{% for booking in bookings %}
+				<tr>
+					<td>{{ booking.date }}</td>
+					<td><a href="/band/{{ booking.band.name }}">{{ booking.band.name }}</a></td>
+					<td>{{ booking.price }}</td>
+                    <td><a class="btn btn-default" href='/booking/{{ booking.url }}'>Se Booking</a></td>
+					<td>
+						{% if booking.concert_created %}
+							Konsert laget
+						{% elseif !booking.considered %}
+							Venter godkjenning
+						{% elseif booking.approval %}
+							Godkjent
+						{% else %}
+							Avslått
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+			{% endif %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

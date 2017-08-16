@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+	<div class="container text-left">
+		<h1 class="formHeader">Opprett band</h1>
+
+		<form class="form-horizontal" method="post" action="/bands/create">
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_search_field">Navn: </label>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" id="spotify_search_field" name="name" placeholder="Søk etter band/skriv navn på bandet" required>
+				</div>
+				<div class="col-xs-2">	
+					<button id="spotify_search_button" type="button" class="btn btn-primary">Søk</button>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_genres">Sjangre: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="spotify_genres" name="spotify_genres" placeholder="Skriv inn sjangere" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="members">Medlemmer: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="members" name="members" placeholder='Skriv navn på medlemmer, skill med komma (",")'>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="description">Beskrivelse: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="description" name="description" placeholder="Beskriv musikken">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_image">Bilde: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="spotify_image" name="spotify_image" placeholder="Bilde">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_popularity">Popularitet: </label>
+				<div class="col-xs-7">
+					<input type="number" class="form-control" id="spotify_popularity" name="spotify_popularity" placeholder="Popularitet i Spotify">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="previous_concerts">Tidligere konserter i Norge: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="previous_concerts" name="previous_concerts" placeholder='Skill konserter med komma (",")'>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="album_sales">Salgstall for albumer: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="album_sales" name="album_sales" placeholder='Skriv på formen <albumnavn>:<salgstall> , skill med komma (",")'>
+				</div>
+			</div>
+
+			<input id="spotify_id" type="hidden" name="spotify_id">
+			<input id="spotify_followers" type="hidden" name="spotify_followers">
+			<input id="spotify_albums" type="hidden" name="spotify_albums">
+			<input id="spotify_top_tracks" type="hidden" name="spotify_top_tracks">
+			<input id="lastfm_playcount" type="hidden" name="lastfm_playcount">
+			<input id="lastfm_listeners" type="hidden" name="lastfm_listeners">
+			<input id="external_urls" type="hidden" name="external_urls">
+			
+			<div class="form-group">
+				<div class="col-xs-3"></div>
+				<div class="col-xs-4">
+					<button id="band_submit" type="submit" class="btn btn-success">Send inn</button>
+					<button id="band_reset" type="reset" class="btn btn-danger">Reset</button>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="/script/spotify-api.js"></script>
+{% endblock %}

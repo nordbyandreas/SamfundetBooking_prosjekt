@@ -1,0 +1,95 @@
+
+{% extends "booking.html" %}
+
+{% block info %}
+	<h1 class="formHeader">{{booking.band.name}}</h1>
+
+	<form class="form-horizontal" method="post" action="/booking/{{booking.url}}"> 
+		<input type="hidden" name="contains_message" value="false"/>
+
+		<div class="form-group">
+			<label class="control-label col-xs-3" for="date">Dato: </label>
+			<div class="col-xs-2">
+				<input type="date" class="form-control" id="date" name="date" value="{{booking.date}}">
+			</div>
+
+			<label class="control-label col-xs-1" for="price">Pris: </label>
+			<div class="col-xs-2">
+				<input type="number" class="form-control" id="price" name="price" value="{{booking.price}}">
+			</div>
+		</div>
+
+		 <div class="form-group">
+			<label class="control-label col-xs-3" for="band">Scene: </label>
+			<div class="col-xs-7">
+				<select data-placeholder="Velg scene" class="form-control chosen-select" name="stage" id="stage" required>
+					{% for stage in stages %}
+						<option value="{{stage.id}}" {% if stage.id == booking.stage.id %} selected="selected" {% endif %}>{{stage.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-3" for="email">Epost: </label>
+			<div class="col-xs-7">
+				<input type="email" class="form-control" id="email" name="email" value="{{booking.email}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-3" for="text">Tekst:</label>
+			<div class="col-xs-7">
+				<textarea class="form-control" rows="4" id="text" name="text">{{booking.text}}</textarea>
+			</div>
+		</div>
+
+		<!--div class="form-group">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-3">
+				<a href="mailto:{{ booking.email }}?Subject=Booking%20av%20{{booking.band_name}}&body={{booking.text}}" target="_top" style="color: black">
+					<button id="mailto-button" type="submit" formaction="/booking/{{booking.name}}" class="btn btn-success">Send mail 
+					</button>
+				</a> 
+			</div>
+			<div class="col-xs-3">
+				<input id="sent-yes" type="checkbox" name="sent" value="yes" {% if booking.sent %} checked {% endif %}>Mail sendt
+			</div>
+		</div-->
+
+		{% if userIs('bookingsjef') %}
+		<div class="form-group">
+			<div class="col-xs-3 text-right">
+				<label class="control-label">Status: </label>
+			</div>
+			<div class="col-xs-1">
+				<input type="submit" class="btn btn-default" value="Lagre"/>
+			</div>
+			<div class="btn-group col-xs-4" data-toggle="buttons">
+				<label class="btn btn-success {% if booking.approval %}active{%  endif %}">
+					<input type="radio" name="confirm" id="radio-godkjenn" value="accept" autocomplete="off" {% if booking.approval %} checked {%  endif %} > Godkjenn
+				</label>
+				<label class="btn btn-info">
+					<input type="radio" name="confirm" id="radio-venter" value="unknown" autocomplete="off"> Ubestemt
+				</label>
+				<label class="btn btn-danger {% if booking.concidered and !booking.approval %}active{% endif %}">
+					<input type="radio" name="confirm" id="radio-avslå" value="deny" autocomplete="off" {% if booking.concidered and !booking.approval %} checked {% endif %}> Avslå
+				</label>
+			</div>
+		</div>
+		{% endif %}
+	</form>
+
+	<form class="form-horizontal" method="POST" action="/booking/{{ booking.url }}">
+		<div class="form-group">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-3">
+				<a href="/concerts/create" class="btn btn-success">Opprett ny konsert</a>
+			</div>
+			<div class="col-xs-4 text-right">
+				<input type="hidden" name="_method" value="DELETE"/>
+				<input type="submit" class="btn btn-danger" value="Slett booking"/>
+			</div>
+		</div>
+	</form>
+{% endblock %}

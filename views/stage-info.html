@@ -1,0 +1,121 @@
+{% extends "index.html" %}
+{% block head %}
+	{% parent %}
+	<link rel="stylesheet" type="text/css" href="/css/tablestyle.css" />
+{% endblock %}
+{% block content %}
+    <div class="col-xs-12">
+        <h1 style="color: #a03033">{{stage.name}}</h1>
+    </div>
+    <div class="col-xs-8">
+        <img width="100%" src="{{stage.image}}"/> 
+    </div>
+
+
+    <div class="col-xs-4">
+            
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Kapasitet</h3>
+				</div>
+            <div class="panel-body">
+				<p>{{stage.capacity}}</p>
+            </div>
+        </div>
+       
+    </div>
+    <div class="col-xs-4">
+            
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Pris</h3>
+				</div>
+            <div class="panel-body">
+				<p>{{stage.price}}</p>
+            </div>
+        </div>
+       
+    </div>
+
+<div class="col-xs-12">
+<div class="container text-center">
+		<h2 class="tableHeader">Konsertoversikt</h2>
+
+		
+		<table data-toggle="table" 
+		data-classes="table table-hover results"
+		data-striped="true"
+		data-sort-name="Date"
+		data-sort-order="asc">
+			<thead>
+				<tr>
+					<th class="col-xs-2" data-field="Date" data-sortable="true">Dato</th>
+					<th class="col-xs-1" data-field="Time" data-sortable="true">Tid</th>
+					<th class="col-xs-3" data-field="Band" data-sortable="true">Band</th>
+					<th class="col-xs-1" data-field="Tickets" data-sortable="true">Publikum</th>
+                    <th class="col-xs-1" data-field="Concert" data-sortable="false"></th>
+					
+				</tr>
+				<!--<tr class="warning no-result">
+      				<td colspan="4"><i class="fa fa-warning"></i> No result</td>
+  				</tr>-->
+			</thead>
+
+			<tbody>
+				{% for concert in concerts %}
+                {% if concert.stage.name == stage.name %} 
+				<tr>
+					<td>{{ concert.date }}</td>
+					<td>{{ concert.time }}</td>
+					<td>
+						{% if concert.bands %}
+						<ul>
+							{% for band in concert.bands %}
+       						<li><a href="/band/{{ band.name }}">{{ band.name }}</a></li>
+					        {% endfor %}
+					        
+						</ul>
+						{% endif %}
+					</td>
+
+					<td>{{concert.audSize}}</td>
+					<td><a class="btn btn-default" href='/concert/{{ concert.name }}'>Se Konsert</a></td>
+    				
+				</tr>
+                {% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+
+
+
+    <!--
+    <div class="col-xs-4">
+            
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Konserter</h3>
+				</div>
+            <div class="panel-body">
+
+				<ul>
+					{% for concert in concerts %}
+                        {% if concert.stage.name == stage.name %} 
+						    <li>{{concert.name}}</li>
+                        {% endif %}
+
+					{% endfor %}
+					-->
+            </div>
+        </div>
+       
+    </div>
+
+
+
+{% endblock %}

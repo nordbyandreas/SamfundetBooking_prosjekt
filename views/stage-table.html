@@ -1,0 +1,41 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+		<div class="container text-center">
+			<h1 class="formHeader">Scener</h1>
+
+			<div class="col-xs-2"></div>
+
+			<div class="col-xs-6">
+				<img id="scenes_image" src="https://www-rails.samfundet.no/upload/images/image_files/000/000/107/original/kart.jpg?1413399464"/>
+			</div>
+			<div class="col-xs-2">
+				{% if stages %}
+				{% for stage in stages %}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title scene_title"><a href="/stage/{{ stage.name }}">{{ stage.name }}</a></h3>
+										
+						<!--<div class="panel-body">
+								
+						<p>Pris: {{ stage.price }}</p>
+								<p>Kapasitet: {{ stage.capacity }}</p>
+								{% if stage.concerts %}
+								<p>Tidligere konserter: {% for concert in stage.concerts %} {{concert}} {% endfor %}</p>
+								{% endif %}
+								<p style="color:{{stage.color}};">Farge: {{stage.color}}</p>
+						</div>-->
+					</div>		
+					<!-- <form method="POST" action="/stage/{{ stage.name }}">
+						<input type="hidden" name="_method" value="DELETE"/>
+						<input type="submit" class="btn btn-danger btn-xs" value="Slett"/>
+					</form>	 -->
+				</div>
+				{% endfor %}
+				{% endif %}
+			</div>
+			<!-- <p>Create more objects <a href="/stages/create">here</a></p> -->
+		</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+	<div class="container text-left">
+		<h2 class="formHeader">Endre band</h2>
+
+		<form class="form-horizontal" method="post" action="/band/{{ band.name }}/edit">
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_search_field">Navn: </label>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" id="spotify_search_field" name="name" value="{{band.name}}" required>
+				</div>
+				<div class="col-xs-2">
+					<button id="spotify_search_button" type="button" class="btn btn-primary">Søk</button>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_genres">Sjangre: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="spotify_genres" name="spotify_genres" value="{{band.spotify_genres}}" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="members">Medlemmer: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="members" name="members" value='{{band.members}}'>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="description">Beskrivelse: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="description" name="description" value="{{band.description}}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_image">Bilde: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="spotify_image" name="spotify_image" value="{{band.spotify_image}}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="spotify_popularity">Popularitet: </label>
+				<div class="col-xs-7">
+					<input type="number" class="form-control" id="spotify_popularity" name="spotify_popularity" value="{{band.spotify_popularity}}">
+				</div>
+			</div>      
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="previous_concerts">Tidligere konserter i Norge: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="previous_concerts" name="previous_concerts" value='{{band.previous_concerts}}'>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3" for="album_sales">Salgstall for albumer: </label>
+				<div class="col-xs-7">
+					<input type="text" class="form-control" id="album_sales" name="album_sales" value='{{band.album_sales}}'>
+				</div>
+			</div>
+
+			<input id="spotify_id" type="hidden" name="spotify_id" value="{{band.Spotify-ID}}">
+			<input id="spotify_followers" type="hidden" name="spotify_followers" value="{{band.spotify_followers}}">
+			<input id="spotify_albums" type="hidden" name="spotify_albums" value="">
+			<input id="spotify_top_tracks" type="hidden" name="spotify_top_tracks" value="">
+
+			<div class="form-group">
+				<div class="col-xs-3"></div>
+				<div class="col-xs-4">
+					<button id="band_submit" type="submit" class="btn btn-success">Send inn</button>
+					<!-- <button id="band_reset" type="reset" class="btn btn-danger">Reset</button> -->
+				</div>
+			</div>
+		</form>
+
+		<form class="form-horizontal" method="POST" action="/band/{{ band.name }}/edit">
+			<div class="form-group">
+				<div class="col-xs-3"></div>
+				<div class="col-xs-2">
+					<input type="hidden" name="_method" value="DELETE"/>
+					<input type="submit" class="btn btn-danger" value="Slett"/>
+				</div>
+			</div>			
+		</form>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="/script/spotify-api.js"></script>
+{% endblock %}

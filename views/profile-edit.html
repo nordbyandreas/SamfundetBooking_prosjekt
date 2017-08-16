@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block head %}
+    {% parent %}
+
+    <link rel="stylesheet" href="/css/Highlight-Clean.css">
+    <link rel="stylesheet" href="/css/styles.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="highlight-clean">
+        <div class="container">
+            <div class="userinfo">
+                <h2 class="text-center">{{ user.local.username }} </h2>
+                <p class="text-center">{{ user.role }} </p>
+            </div>
+            <hr>
+            <div id="cahnge_password" class="userinfo">
+            <form action="/profile" method="post">
+                {% if userIs('admin') %}
+                <p class="text-center">Endre Rolle</p>
+                <label class="change_password">Ny Rolle: </label>
+                <input type="text" class="change_password" name="role">
+                <button class="btn btn-default change_password_button" type="submit">Lagre </button>
+                <hr>
+                {% endif %}
+            </div>
+            </form>
+            <form action="/changepass" method="post">
+                <div id="cahnge_password" class="userinfo">
+                    <p class="text-center">Endre Passord</p>
+                    <label class="change_password">Nytt Passord: </label>
+                    <input type="password" class="change_password" name="password_new">
+                    <br>
+
+                    <label class="change_password">Bekreft Passord: </label>
+                    <input type="password" class="change_password_old" name="password_new_confirm">
+                    <button class="btn btn-default change_password_button" type="submit">Lagre </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+{% endblock %}

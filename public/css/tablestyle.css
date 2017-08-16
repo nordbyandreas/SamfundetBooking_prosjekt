@@ -1,0 +1,309 @@
+p {
+	margin: 0;
+}
+
+th{
+	text-align: center;
+}
+
+/*Generelt*/
+.container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/*Tabeller*/
+.tableHeader{
+	margin-top: 0;
+	margin-bottom: 2rem;
+	color: #a03033;
+}
+
+.dropdown .dropdown-menu{
+	margin-top: -2px;
+}
+
+.table{
+	font-size: 1.5rem;
+}
+
+.table > tbody > tr > td{
+	vertical-align: middle;
+} 
+
+.results tr[visible='false'],
+.no-result, 
+.empty-table{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+#booking_dropdown{
+	width: 9.333%
+}
+
+#concert_dropdown{
+	width: 9.333%
+}
+
+#concert_create{
+	margin-left: 1rem;
+}
+
+#concert_search{
+	margin-right: 0;
+}
+
+/*Infosider*/
+.scene_title{
+	font-size: 2rem;
+}
+
+.panel-title,
+.panel-body h5{
+	margin-top: 0;
+	color: #a03033;
+}
+
+#band_header,
+#concert_header{
+	display: inline-block;
+	margin-top: 0;
+	color: #a03033;
+}
+
+#band_edit, #band_delete,
+#concert_edit, #concert_delete{
+	display: inline-block;
+	margin-left: 1rem;
+	float: right;
+}
+
+#band_image{
+	margin-bottom: 0;
+	border-bottom: none;
+}
+
+#band_links{
+	word-wrap: break-word;
+}
+
+#band_stats,
+#concert_bandstats{
+	margin-bottom: 0;
+}
+
+#band_stats_data tr td,
+#concert_bandstats_data tr td{
+	padding-left: 4px;
+}
+
+#band_albums .panel-body,
+#band_tracks .panel-body,
+#band_concerts .panel-body{
+	padding: 0;
+}
+
+#concert_info{
+	padding: 0;
+}
+
+#concert_info table{
+	margin: 0;
+}
+
+#concert_info table tr td{
+	padding-left: 15px;
+}
+
+#concert_bandinfo .panel-body p{
+	padding-left: 1rem;
+}
+
+#scenes_image{
+	width: 100%;
+}
+
+/*Forms*/
+.control-label{
+	font-size: 1.5rem;
+}
+
+.formHeader{
+	margin-top: 0;
+	margin-bottom: 2rem;
+	text-align: center;
+	color: #a03033;
+}
+
+.msgs{
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 15px;
+	/*margin: auto 15px 0 15px;*/
+	margin-bottom: 0;
+}
+
+.msgs .panel-body{
+	padding: 8px 12px 8px 12px;
+}
+
+#artist_image{
+	margin-top: 15px;
+	border-radius: 5px;
+}
+
+#booking_messages{
+	margin: 0;
+	color: #a03033;
+}
+
+#booking_messages_send{
+	width: 100%;
+}
+
+#concert_time{
+	width: 4.333%;
+}
+
+#concert_practicetime{
+	width: 12.333%;
+}
+
+#concert_price{
+	margin: 0;
+	color: #a03033;
+}
+
+#concert_expenses_sum{
+	padding-left: 0;	
+}
+
+#concert_edit_bands{
+	margin-bottom: 0;
+}
+
+#concert_edit_bands .panel-body{
+	padding: 8px 12px 8px 12px;
+}
+
+#concert_band_list {
+  display: inline;
+  list-style: none;
+}
+
+#concert_band_list li {
+  display: inline;
+}
+
+#concert_band_list li:after {
+  content: ", ";
+}
+
+#concert_band_list li:last-child:after {
+  content: "";
+}
+
+/*
+Bakgrunnsarger:
+#a03033
+#91282b
+#742020
+Borderfarger:
+#a42e2e
+#802424
+#401212
+*/
+
+/*.btn-drop*/
+.btn-drop{
+	color:#fff;
+	background-color:#a03033;
+	border-color:#a42e2e;
+}
+.btn-drop.focus,
+.btn-drop:focus{
+	color:#fff;
+	background-color:#91282b;
+	border-color:#401212;
+}
+.btn-drop:hover{
+	color:#fff;
+	background-color:#91282b;
+	border-color:#742020;
+}
+.btn-drop.active,
+.btn-drop:active,
+.open>.dropdown-toggle.btn-drop{
+	color:#fff;
+	background-color:#742020;
+	border-color:#742020;
+}
+.btn-drop.active.focus,
+.btn-drop.active:focus,
+.btn-drop.active:hover,
+.btn-drop:active.focus,
+.btn-drop:active:focus,
+.btn-drop:active:hover,
+.open>.dropdown-toggle.btn-drop.focus,
+.open>.dropdown-toggle.btn-drop:focus,
+.open>.dropdown-toggle.btn-drop:hover{
+	color:#fff;
+	background-color:#742020;
+	border-color:#401212;
+}
+.btn-drop.active,
+.btn-drop:active,
+.open>.dropdown-toggle.btn-drop{
+	background-image:none;
+}
+.btn-drop.disabled.focus,
+.btn-drop.disabled:focus,
+.btn-drop.disabled:hover,
+.btn-drop[disabled].focus,
+.btn-drop[disabled]:focus,
+.btn-drop[disabled]:hover,
+fieldset[disabled] .btn-drop.focus,
+fieldset[disabled] .btn-drop:focus,
+fieldset[disabled] .btn-drop:hover{
+	background-color:#91282b;
+	border-color:#a42e2e;
+}
+
+.btn-drop:focus,
+.btn-drop:hover {
+    background-color: #91282b;
+    background-position: 0 -4rem;
+}
+
+.btn-drop.active,
+.btn-drop:active{
+	background-color:#742020;
+	border-color:#802424;
+}
+.btn-drop.disabled,
+.btn-drop.disabled.active,
+.btn-drop.disabled.focus,
+.btn-drop.disabled:active,
+.btn-drop.disabled:focus,
+.btn-drop.disabled:hover,
+.btn-drop[disabled],
+.btn-drop[disabled].active,
+.btn-drop[disabled].focus,
+.btn-drop[disabled]:active,
+.btn-drop[disabled]:focus,
+.btn-drop[disabled]:hover,
+fieldset[disabled] .btn-drop,
+fieldset[disabled] .btn-drop.active,
+fieldset[disabled] .btn-drop.focus,
+fieldset[disabled] .btn-drop:active,
+fieldset[disabled] .btn-drop:focus,
+fieldset[disabled] .btn-drop:hover{
+	background-color:#742020;
+	background-image:none;
+}
+

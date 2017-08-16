@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content %}
+<form method="post" action="/stages/create">
+	<p>Navn: </p>
+    <input type="text" name="name" required>
+    <p>Pris: </p>
+    <input type="text" name="price" required>
+    <p>Kapasitet: </p>
+    <input type="text" name="capacity" required>
+    <p>Farge (hex e.g. #1b3d5f): </p>
+    <input type="text" name="color" required>
+    <p>Konserter (Array): </p>
+    <input type="text" name="concerts" required>
+    <p>Image:</p>
+    <input type="text" name="image">
+    <p></p>
+    <input type="submit" value="submit">
+</form>
+
+{% endblock %}

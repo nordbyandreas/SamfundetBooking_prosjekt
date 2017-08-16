@@ -1,0 +1,173 @@
+#tableex{
+	border: 1px solid;
+	height: 500px;
+	width: 800px;
+}
+
+#heading a{
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+#heading a:visited{
+	color: white;
+}
+
+#heading{
+	position: fixed;
+	height: 50px;
+	background-color: black;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	border-bottom: 2px solid black;
+	z-index: 1000;
+}
+
+#login{
+	float: right;
+	white-space: nowrap;
+	margin-right: 2%;
+}
+#samfbook{
+	width: 250px;
+	font-size: 20px
+	
+}
+
+.headlink{
+	display: inline-block;
+	position:relative;
+	background-color: black;
+	height:100%;
+	width: 100px;
+	text-align:center;
+	color: white;
+	padding: 15px
+}
+
+.headlink:hover{
+	
+}
+
+#body{
+	margin-top: 50px;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+#navbar{
+	color: white;
+	display: block;
+	margin-right: 70px;
+	position:fixed;
+	min-height: 100%;
+	width: 20%;
+	background-color: #333;
+}
+#booksys{
+	font-size: 20px;
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+
+.navlink{
+	font-size: 14px;
+	display: inline-block;
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	padding-top: 10px;
+	border-top: 1px solid grey;
+}
+
+#navbar a{
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+#navbar a:visited{
+	text-decoration: none;
+	color: white;
+}
+
+.navlink:last-child{
+	border-bottom: 1px solid grey;
+}
+.navlink:hover{
+	background-color: black;
+	border-color: black;
+}
+
+#logo{
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#content{
+	position: relative;
+	display: inline block;
+	margin-left: 21%;
+	margin-right: 1%;
+    
+}
+
+body,html{
+	margin:0px;
+	padding:0px;
+	height:100%;
+	font-family: "Lato", "futura-pt", sans-serif;
+}
+
+div#old_password_container.container {
+	align-content:center;
+	/*margin-left:350px;*/
+	/*margin-right:350px;*/
+	padding-left:350px;
+	padding-right:250px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+div#new_password_container.container {
+	/*margin-left:350px;*/
+	padding-left:350px;
+	padding-right:250px;
+}
+
+input#new_password {
+	margin-left:43px;
+}
+
+button.btn.btn-default.change_password_button {
+	/*margin-left:auto;*/
+	/*margin-right:auto;*/
+	width:150px;
+	/*position:relative;*/
+	/*margin:0 auto;*/
+	margin-top:7px;
+}
+
+#concert_band_list {
+  display: inline;
+  list-style: none;
+}
+
+#concert_band_list li {
+  display: inline;
+}
+
+#concert_band_list li:after {
+  content: ", ";
+}
+
+#concert_band_list li:last-child:after {
+  content: "";
+}
+
+/* fargenotater: riktig rød: #a03033,    grå: #eeeeee  */

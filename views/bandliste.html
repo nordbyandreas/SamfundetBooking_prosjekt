@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<div class="container text-center">
+		<h1 class="tableHeader">Liste over band</h1>
+		
+		<div id="band_create" class="col-xs-2 text-left">
+			<a class="btn btn-primary" href="/bands/create">Legg inn nytt band</a>
+		</div>
+
+		<div id="band_search" class="col-xs-5 form-group pull-right">
+			<input type="text" class="search form-control" placeholder="Søk">
+		</div>
+
+		<table id="tabell" data-toggle="table" 
+		data-classes="table table-hover results"
+		data-striped="true"
+		data-sort-name="Band"
+		data-sort-order="asc">
+			<thead>
+				<tr>
+					<th class="col-xs-3" data-field="Band" data-sortable="true">Band</th>
+					<th class="col-xs-5" data-field="Genre" data-sortable="true">Spotify-sjangre</th>
+					<th class="col-xs-2" data-field="Popularity" data-sortable="true">Popularitetsrate</th>
+					<th class="col-xs-2" data-field="Delete" data-sortable="false"></th>
+				</tr>	
+			</thead>
+
+			<tbody>
+				<tr class="no-result">
+					<td colspan="8">Finner ikke noe som stemmer med søket</td>
+				</tr>
+				{% if bands %}
+				{% for band in bands %}
+					<tr>
+						<td><a id="{{band.name}}" href="/band/{{ band.name}}">{{band.name}}</a></td>
+						<td>{{band.spotify_genres}}</td>
+						<td>{{band.spotify_popularity}}</td>
+						<td>
+							<form method="POST" action="/band/{{ band.name }}">
+	        					<input type="hidden" name="_method" value="DELETE"/>
+	        					<input type="submit" class="btn btn-danger" value="Slett"/><br>
+	    					</form>
+	    				</td>
+					</tr>
+				{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

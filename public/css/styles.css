@@ -1,0 +1,74 @@
+div#old_password_container.container {
+  align-content:center;
+  /*margin-left:350px;*/
+  /*margin-right:350px;*/
+  padding-left:350px;
+  padding-right:250px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+div#new_password_container.container {
+  /*margin-left:350px;*/
+  padding-left:350px;
+  padding-right:250px;
+}
+
+input#new_password {
+  margin-left:43px;
+}
+
+button.btn.btn-default.change_password_button {
+  /*margin-left:auto;*/
+  /*margin-right:auto;*/
+  width:150px;
+  /*position:relative;*/
+  /*margin:0 auto;*/
+  margin-top:7px;
+}
+
+.userinfo {
+  font-size:16px;
+  max-width:500px;
+  margin:0 auto 25px;
+  text-align:center;
+}
+
+label.change_password {
+  padding-left:60px;
+  padding-right:60px;
+  margin-left:auto;
+  margin-right:auto;
+  width:300px;
+}
+
+button.btn.btn-default.change_password_button {
+  /*margin-left:auto;*/
+  /*margin-right:auto;*/
+  width:150px;
+  /*position:relative;*/
+  /*margin:0 auto;*/
+  margin-top:7px;
+}
+
+input.change_password_old {
+  width: 150px;
+}
+
+input.change_password {
+  width: 150px;
+}
+
+.booking-messages {
+  display: inline-block;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  word-wrap: all;
+}
+
+.align-buttons {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
